@@ -19,6 +19,7 @@ export const signup = async (req, res, next) => {
 
   const hashedPassword = bcryptjs.hashSync(password, 10);
 
+  // used this user model from user.model.js:: NOTE
   const newUser = new User({
     username,
     email,
@@ -26,7 +27,7 @@ export const signup = async (req, res, next) => {
   });
 
   try {
-    await newUser.save();
+    await newUser.save(); //to save in database
     res.json('Signup successful');
   } catch (error) {
     next(error);
